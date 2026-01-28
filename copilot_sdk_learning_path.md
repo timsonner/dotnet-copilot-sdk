@@ -92,7 +92,7 @@ The SDK is event-driven. Key events to handle:
     *   `Microsoft.Extensions.AI` (for tool definitions)
 *   **Environment**: The `github-copilot-cli` must be installed and available in the system PATH.
 
-## 5. References
+## References
 
 *   **Detailed Instructions & API Docs**: [awesome-copilot/instructions/copilot-sdk-csharp.instructions.md](https://github.com/github/awesome-copilot/blob/main/instructions/copilot-sdk-csharp.instructions.md)
 *   **Cookbook (Examples)**: [github/copilot-sdk/tree/main/cookbook/dotnet](https://github.com/github/copilot-sdk/tree/main/cookbook/dotnet)

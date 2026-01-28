@@ -38,6 +38,7 @@ The agent is configured in `RalphDemo/RalphAgent/Program.cs`. You can modify:
 -   `MaxIterations`: Maximum number of repair attempts.
 -   `SessionConfig`: Model selection and system message.
 
-## references
-- [Copilot SDK Learning Path](copilot_sdk_learning_path.md)
-- [Ralph Pattern Description](ralph_pattern_csharp.md)
+## References
+
+-   **Copilot SDK Learning Path**: [copilot_sdk_learning_path.md](copilot_sdk_learning_path.md)
+-   **Ralph Pattern Description**: [ralph_pattern_csharp.md](ralph_pattern_csharp.md)

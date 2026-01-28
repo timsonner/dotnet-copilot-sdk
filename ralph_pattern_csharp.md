@@ -128,3 +128,8 @@ async Task ProcessSessionUntilIdleAsync(CopilotSession session)
     *   `run_command`: verify its work (the feedback mechanism).
 2.  **Prompt Engineering**: The prompt should encourage checking state first. "Don't assume, check the files."
 3.  **Cost/Safety**: Always include a `maxIterations` guard to prevent infinite loops (and infinite billing).
+
+## References
+
+*   **Ralphy overview**: [https://ghuntley.com/ralph/](https://ghuntley.com/ralph/)
+*   **Ralphy implementation**: [https://github.com/repomirrorhq/repomirror/blob/main/repomirror.md](https://github.com/repomirrorhq/repomirror/blob/main/repomirror.md)

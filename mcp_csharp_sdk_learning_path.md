@@ -108,3 +108,7 @@ The Model Context Protocol (MCP) C# SDK empowers .NET developers to build applic
 *   **Fine-grained Control:** Manually configure `McpServerOptions` for custom handlers and server information.
 *   **AI Function Integration:** `McpClientTool` inherits from `AIFunction`, allowing easy integration with LLM SDKs.
 *   **Error Handling:** Understand `McpProtocolException` and error codes.
+
+## References
+
+*   **Detailed Instructions & API Docs**: [https://github.com/modelcontextprotocol/csharp-sdk](https://github.com/modelcontextprotocol/csharp-sdk)
