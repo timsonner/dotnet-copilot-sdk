@@ -1,6 +1,6 @@
 using System.ComponentModel;
 using System.Diagnostics;
-using GitHub.Copilot.Sdk;
+using GitHub.Copilot.SDK;
 using Microsoft.Extensions.AI;
 
 // ---------------------------------------------------------
@@ -95,7 +95,9 @@ while (!taskComplete && iteration < MaxIterations)
     {
         Model = "gpt-4o", // or "gpt-4"
         Tools = tools,
-        SystemMessage = "You are an autonomous repair agent. " +
+        SystemMessage = new SystemMessageConfig
+        {
+            Content = "You are an autonomous repair agent. " +
                         "Your goal is to make all tests pass. " +
                         "1. List files to locate the code. " +
                         "2. Run tests to see failures. " +
@@ -103,6 +105,7 @@ while (!taskComplete && iteration < MaxIterations)
                         "4. Fix the code using 'write_file'. " +
                         "5. Run tests again to verify. " +
                         "If tests pass, say 'SUCCESS' and stop."
+        }
     };
 
     await using var session = await client.CreateSessionAsync(config);
@@ -110,7 +113,7 @@ while (!taskComplete && iteration < MaxIterations)
     // Initial prompt for this turn
     await session.SendAsync(new MessageOptions 
     { 
-        Content = $"Iteration {iteration}. Current status? (Please run tests first)" 
+        Prompt = $"Iteration {iteration}. Current status? (Please run tests first)" 
     });
 
     // Wait for this turn to complete
@@ -154,13 +157,12 @@ async Task<bool> ProcessSessionUntilIdleAsync(CopilotSession session)
                 break;
             
             case ToolExecutionStartEvent tool:
-                Console.WriteLine($"[Tool]: Executing {tool.Data.Function.Name}...");
+                Console.WriteLine($"[Tool]: Executing {tool.Data.ToolName}...");
                 break;
 
             case ToolExecutionCompleteEvent toolResult:
                 // Check if tests passed in the tool result
-                if (toolResult.Data.Function.Name == "run_tests" && 
-                    toolResult.Data.Result.ToString().Contains("Tests PASSED"))
+                if (toolResult.Data.Result?.Content.Contains("Tests PASSED") == true)
                 {
                     Console.WriteLine("[Ralph] Tests passed during tool execution!");
                     // We could mark complete here, but let the agent confirm
